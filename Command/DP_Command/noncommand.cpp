@@ -42,6 +42,10 @@ int main() {
 
 	SAFE_DELETE(pChara);
 
+	// ストッパー（Enterを押すと続く）
+	std::cout << "Press ENTER KEY to continue..." << std::endl;
+	getchar();
+
 	return 0;
-}
+	}
 */

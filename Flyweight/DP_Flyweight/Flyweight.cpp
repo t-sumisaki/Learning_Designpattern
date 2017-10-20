@@ -72,6 +72,9 @@ public:
 
 	}
 
+	/// <summary>
+	/// キャッシュした
+	/// </summary>
 	void clear() {
 		// キャッシュしている印字をすべて破棄する
 		for (auto itr = this->m_printingTypes.begin(); itr != this->m_printingTypes.end(); ++itr) {
