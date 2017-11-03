@@ -96,6 +96,8 @@ class HtmlPrint : public IPrintTemplate
 int main()
 {
 
+    std::cout << "TemplateMethod sample." << std::endl;
+
     IPrintTemplate *doc = new DocumentPrint();
     IPrintTemplate *html = new HtmlPrint();
 
@@ -104,6 +106,12 @@ int main()
 
     delete doc;
     delete html;
+
+
+    // ストッパー（Enterを押すと続く）
+	std::cout << "Press ENTER KEY to continue..." << std::endl;
+	getchar();
+
 
     return 0;
 }
