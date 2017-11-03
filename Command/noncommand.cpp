@@ -1,16 +1,16 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <vector>
 
 
 #define SAFE_DELETE(p_) if (p_) { delete p_; p_=NULL; }
 
 /// <summary>
-/// ƒLƒƒƒ‰ƒNƒ^[ƒNƒ‰ƒX
+/// ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã‚¯ãƒ©ã‚¹
 /// </summary>
 class CCharacter {
 public:
 	/// <summary>
-	/// XVˆ—i–ˆƒtƒŒ[ƒ€ŒÄ‚Î‚ê‚éj
+	/// æ›´æ–°å‡¦ç†ï¼ˆæ¯ãƒ•ãƒ¬ãƒ¼ãƒ å‘¼ã°ã‚Œã‚‹ï¼‰
 	/// </summary>
 	virtual void update() {
 		this->inputFunc();
@@ -19,15 +19,15 @@ public:
 	}
 
 	virtual void animationFunc() {
-		std::cout << "ƒAƒjƒ[ƒVƒ‡ƒ“ˆ—" << std::endl;
+		std::cout << "ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³å‡¦ç†" << std::endl;
 	}
 
 	virtual void applyFunc() {
-		std::cout << "”½‰fˆ—" << std::endl;
+		std::cout << "åæ˜ å‡¦ç†" << std::endl;
 	}
 
 	virtual void inputFunc() {
-		std::cout << "“ü—Íˆ—" << std::endl;
+		std::cout << "å…¥åŠ›å‡¦ç†" << std::endl;
 	}
 };
 
@@ -42,7 +42,7 @@ int main() {
 
 	SAFE_DELETE(pChara);
 
-	// ƒXƒgƒbƒp[iEnter‚ğ‰Ÿ‚·‚Æ‘±‚­j
+	// ã‚¹ãƒˆãƒƒãƒ‘ãƒ¼ï¼ˆEnterã‚’æŠ¼ã™ã¨ç¶šãï¼‰
 	std::cout << "Press ENTER KEY to continue..." << std::endl;
 	getchar();
 

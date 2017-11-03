@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <vector>
 
 #define SAFE_DELETE(p_) if (p_) { delete p_; p_=NULL; }
@@ -26,7 +26,7 @@ public:
 	Enemy* clone() override {
 		Enemy* _clone = new Slime();
 
-		// ‚±‚±‚Åƒpƒ‰ƒ[ƒ^‚ğƒRƒs[‚·‚é
+		// ã“ã“ã§ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’ã‚³ãƒ”ãƒ¼ã™ã‚‹
 		_clone->m_name = this->m_name + ":clone";
 
 		return _clone;
@@ -43,7 +43,7 @@ public:
 	Enemy* clone() override {
 		Enemy* _clone = new Wolf();
 
-		// ‚±‚±‚Åƒpƒ‰ƒ[ƒ^‚ğƒRƒs[‚·‚é
+		// ã“ã“ã§ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’ã‚³ãƒ”ãƒ¼ã™ã‚‹
 		_clone->m_name = this->m_name + ":clone";
 		return _clone;
 	}
@@ -58,7 +58,7 @@ public:
 	Enemy* clone() override {
 		Enemy* _clone = new Crow();
 
-		// ‚±‚±‚Åƒpƒ‰ƒ[ƒ^‚ğƒRƒs[‚·‚é
+		// ã“ã“ã§ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’ã‚³ãƒ”ãƒ¼ã™ã‚‹
 		_clone->m_name = this->m_name + ":clone";
 
 		return _clone;
@@ -110,7 +110,7 @@ int main() {
 	SAFE_DELETE(protoWolf);
 	SAFE_DELETE(protoCrow);
 
-	// ƒXƒgƒbƒp[iEnter‚ğ‰Ÿ‚·‚Æ‘±‚­j
+	// ã‚¹ãƒˆãƒƒãƒ‘ãƒ¼ï¼ˆEnterã‚’æŠ¼ã™ã¨ç¶šãï¼‰
 	std::cout << "Press ENTER KEY to continue..." << std::endl;
 	getchar();
 

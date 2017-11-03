@@ -1,10 +1,10 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <vector>
 
 #define SAFE_DELETE(p_) if (p_) { delete p_; p_=NULL; }
 
 /// <summary>
-/// ƒRƒ}ƒ“ƒhŠî’êƒNƒ‰ƒX
+/// ã‚³ãƒãƒ³ãƒ‰åŸºåº•ã‚¯ãƒ©ã‚¹
 /// </summary>
 class CCommand {
 public:
@@ -12,49 +12,49 @@ public:
 	virtual void execute() = 0;
 protected:
 	/// <summary>
-	/// ŒÄ‚ñ‚¾‰ñ”‚ğƒJƒEƒ“ƒg
+	/// å‘¼ã‚“ã å›æ•°ã‚’ã‚«ã‚¦ãƒ³ãƒˆ
 	/// </summary>
 	int m_callCount = 0;
 };
 
 /// <summary>
-/// ƒLƒƒƒ‰ƒNƒ^[ƒNƒ‰ƒX
+/// ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã‚¯ãƒ©ã‚¹
 /// </summary>
 class CCharacter {
 public:
 
 	/// <summary>
-	/// ƒAƒjƒ[ƒVƒ‡ƒ“ˆ—
+	/// ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³å‡¦ç†
 	/// </summary>
 	virtual void animationFunc() {
-		std::cout << "ƒAƒjƒ[ƒVƒ‡ƒ“ˆ—" << std::endl;
+		std::cout << "ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³å‡¦ç†" << std::endl;
 	}
 	/// <summary>
-	/// ”½‰fˆ—
+	/// åæ˜ å‡¦ç†
 	/// </summary>
 	virtual void applyFunc() {
-		std::cout << "”½‰fˆ—" << std::endl;
+		std::cout << "åæ˜ å‡¦ç†" << std::endl;
 	}
 	/// <summary>
-	/// “ü—Íˆ—
+	/// å…¥åŠ›å‡¦ç†
 	/// </summary>
 	virtual void inputFunc() {
-		std::cout << "“ü—Íˆ—" << std::endl;
+		std::cout << "å…¥åŠ›å‡¦ç†" << std::endl;
 	}
 };
 
 /// <summary>
-/// “GƒNƒ‰ƒX‚ÌÀ‘•
+/// æ•µã‚¯ãƒ©ã‚¹ã®å®Ÿè£…
 /// </summary>
 class CEnemy : public CCharacter {
 	void animationFunc() override {
-		std::cout << "Enemy:ƒAƒjƒ[ƒVƒ‡ƒ“ˆ—" << std::endl;
+		std::cout << "Enemy:ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³å‡¦ç†" << std::endl;
 	}
 };
 
 
 /// <summary>
-/// ƒAƒjƒ[ƒVƒ‡ƒ“ˆ—ƒRƒ}ƒ“ƒh‚ÌÀ‘•
+/// ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³å‡¦ç†ã‚³ãƒãƒ³ãƒ‰ã®å®Ÿè£…
 /// </summary>
 class CAnimationCommand : public CCommand {
 private:
@@ -66,12 +66,12 @@ public:
 
 	void execute() override {
 		this->m_pChara->animationFunc();
-		// ŒÄ‚ñ‚¾‰ñ”‚ğo—Í
+		// å‘¼ã‚“ã å›æ•°ã‚’å‡ºåŠ›
 		std::cout << "Call count" << ++this->m_callCount << std::endl;
 	}
 };
 
-// ”½‰fˆ—ƒRƒ}ƒ“ƒh‚ÌÀ‘•
+// åæ˜ å‡¦ç†ã‚³ãƒãƒ³ãƒ‰ã®å®Ÿè£…
 class CApplyCommand : public CCommand {
 private:
 	CCharacter* m_pChara = NULL;
@@ -82,13 +82,13 @@ public:
 
 	virtual void execute() override {
 		this->m_pChara->applyFunc();
-		// “Ç‚ñ‚¾‰ñ”‚ğo—Í
+		// èª­ã‚“ã å›æ•°ã‚’å‡ºåŠ›
 		std::cout << "Call count" << ++this->m_callCount << std::endl;
 	}
 };
 
 
-// “ü—Íˆ—ƒRƒ}ƒ“ƒh‚ÌÀ‘•
+// å…¥åŠ›å‡¦ç†ã‚³ãƒãƒ³ãƒ‰ã®å®Ÿè£…
 class CInputCommand : public CCommand {
 private:
 	CCharacter* m_pChara = NULL;
@@ -104,20 +104,20 @@ public:
 
 
 /// <summary>
-/// –½—ßÀs—pƒNƒ‰ƒX
+/// å‘½ä»¤å®Ÿè¡Œç”¨ã‚¯ãƒ©ã‚¹
 /// </summary>
 class CInvoker {
 private:
-	// –½—ßŒQ
+	// å‘½ä»¤ç¾¤
 	std::vector<CCommand*> m_commands;
 
 public:
-	// –½—ß‚Ì’Ç‰Á
+	// å‘½ä»¤ã®è¿½åŠ 
 	void add(CCommand* pCommand) {
 		this->m_commands.push_back(pCommand);
 	}
 
-	// –½—ß‚ÌÀs
+	// å‘½ä»¤ã®å®Ÿè¡Œ
 	void execute() {
 		for (CCommand* pCommand : this->m_commands) {
 			pCommand->execute();
@@ -129,20 +129,20 @@ public:
 
 int main() {
 
-	// ƒLƒƒƒ‰ƒNƒ^[‚Ì¶¬
+	// ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®ç”Ÿæˆ
 	CCharacter* pChara = new CCharacter();
 
-	// ƒAƒjƒ[ƒVƒ‡ƒ“ˆ—–½—ß‚Ì¶¬
+	// ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³å‡¦ç†å‘½ä»¤ã®ç”Ÿæˆ
 	CCommand* pAnimeCommand = new CAnimationCommand(pChara);
 
-	// ”½‰fˆ—–½—ß‚Ì¶¬
+	// åæ˜ å‡¦ç†å‘½ä»¤ã®ç”Ÿæˆ
 	CCommand* pApplyCommand = new CApplyCommand(pChara);
 
 
 
 
-	// –½—ß‹N“®Ò(Invoker)‚ğ¶¬‚µ
-	// ƒAƒjƒ[ƒVƒ‡ƒ“‚Æ”½‰f‚Ì–½—ß‚ğæ‚è•t‚¯‚é
+	// å‘½ä»¤èµ·å‹•è€…(Invoker)ã‚’ç”Ÿæˆã—
+	// ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã¨åæ˜ ã®å‘½ä»¤ã‚’å–ã‚Šä»˜ã‘ã‚‹
 	CInvoker* pInvoker = new CInvoker();
 
 	pInvoker->add(pAnimeCommand);
@@ -150,18 +150,18 @@ int main() {
 
 
 
-	// ‹N“®Ò‚ğ‹N“®
+	// èµ·å‹•è€…ã‚’èµ·å‹•
 	pInvoker->execute();
 	pInvoker->execute();
 	pInvoker->execute();
 
-	// Œã•Ğ•t‚¯
+	// å¾Œç‰‡ä»˜ã‘
 	SAFE_DELETE(pInvoker);
 	SAFE_DELETE(pAnimeCommand);
 	SAFE_DELETE(pApplyCommand);
 	SAFE_DELETE(pChara);
 
-	// ƒXƒgƒbƒp[iEnter‚ğ‰Ÿ‚·‚Æ‘±‚­j
+	// ã‚¹ãƒˆãƒƒãƒ‘ãƒ¼ï¼ˆEnterã‚’æŠ¼ã™ã¨ç¶šãï¼‰
 	std::cout << "Press ENTER KEY to continue..." << std::endl;
 	getchar();
 

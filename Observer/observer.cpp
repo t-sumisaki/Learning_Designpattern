@@ -1,52 +1,52 @@
-#include <iostream>
+ï»¿#include <iostream>
 
 #define SAFE_DELETE(p_) if (p_) { delete p_; p_ = NULL; }
 
 
 
-// ObserveriŠÏ@ÒjŠî’êƒNƒ‰ƒX
+// Observerï¼ˆè¦³å¯Ÿè€…ï¼‰åŸºåº•ã‚¯ãƒ©ã‚¹
 class Observer {
 public:
-	// ’Ê’móM
+	// é€šçŸ¥å—ä¿¡
 	virtual void update() = 0;
 };
 
 
 
-// ƒWƒƒƒ“ƒvÀÑObserver
+// ã‚¸ãƒ£ãƒ³ãƒ—å®Ÿç¸¾Observer
 class JumpAchievementObserver : public Observer {
 
 private:
-	// ƒWƒƒƒ“ƒv‰ñ”ƒJƒEƒ“ƒg—p
+	// ã‚¸ãƒ£ãƒ³ãƒ—å›æ•°ã‚«ã‚¦ãƒ³ãƒˆç”¨
 	int m_jumpCount = 0;
-	// ƒWƒƒƒ“ƒv‚ÌÀÑ‚ğæ“¾‚µ‚½‚©H
+	// ã‚¸ãƒ£ãƒ³ãƒ—ã®å®Ÿç¸¾ã‚’å–å¾—ã—ãŸã‹ï¼Ÿ
 	bool m_jumpAchievement = false;
-	// ƒWƒƒƒ“ƒv‚ÌÀÑ‚Ì‚µ‚«‚¢’l
+	// ã‚¸ãƒ£ãƒ³ãƒ—ã®å®Ÿç¸¾ã®ã—ãã„å€¤
 	const int ACHIEVEMENT_JUMP = 10;
 
 public:
-	// ’Ê’móM
+	// é€šçŸ¥å—ä¿¡
 	void update() override {
 
-		// ƒJƒEƒ“ƒgƒAƒbƒv
+		// ã‚«ã‚¦ãƒ³ãƒˆã‚¢ãƒƒãƒ—
 		++this->m_jumpCount;
 
-		// ÀÑ‚ğ‚Ü‚¾‰ğœ‚µ‚Ä‚¢‚È‚¢&ƒWƒƒƒ“ƒv‰ñ”‚ª‚µ‚«‚¢’l‚É’B‚µ‚½ê‡‚ÍÀÑ‚ğæ“¾
+		// å®Ÿç¸¾ã‚’ã¾ã è§£é™¤ã—ã¦ã„ãªã„&ã‚¸ãƒ£ãƒ³ãƒ—å›æ•°ãŒã—ãã„å€¤ã«é”ã—ãŸå ´åˆã¯å®Ÿç¸¾ã‚’å–å¾—
 		if (!this->m_jumpAchievement && this->m_jumpCount >= this->ACHIEVEMENT_JUMP) {
 			this->subscribeAchievement("Jump!");
 			this->m_jumpAchievement = true;
 		}	
 	}
 
-	// ÀÑæ“¾
+	// å®Ÿç¸¾å–å¾—
 	void subscribeAchievement(std::string achievement) {
 
-		// NOTE: –{“–‚ÍÀÑ‚ÌŠî’êƒNƒ‰ƒX‚ğì‚Á‚Ä‚»‚¿‚ç‚É’u‚«‚½‚¢
+		// NOTE: æœ¬å½“ã¯å®Ÿç¸¾ã®åŸºåº•ã‚¯ãƒ©ã‚¹ã‚’ä½œã£ã¦ãã¡ã‚‰ã«ç½®ããŸã„
 		std::cout << "Achievement: " << achievement.c_str() << std::endl;
 	}
 };
 
-// ƒvƒŒƒCƒ„[ƒNƒ‰ƒX
+// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚¯ãƒ©ã‚¹
 class Player {
 
 private:
@@ -58,13 +58,13 @@ public:
 		m_jumpAchievement = observer;
 	}
 
-	// ƒWƒƒƒ“ƒv‚·‚é
+	// ã‚¸ãƒ£ãƒ³ãƒ—ã™ã‚‹
 	void jump() {
 
-		// ƒWƒƒƒ“ƒv‚µ‚ÄƒJƒEƒ“ƒgƒAƒbƒv
+		// ã‚¸ãƒ£ãƒ³ãƒ—ã—ã¦ã‚«ã‚¦ãƒ³ãƒˆã‚¢ãƒƒãƒ—
 		std::cout << "Jump" << std::endl;
 
-		// Observer‚ª“o˜^‚³‚ê‚Ä‚¢‚é‚Æ‚«AObserver‚É’Ê’m
+		// ObserverãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã¨ãã€Observerã«é€šçŸ¥
 		if (m_jumpAchievement) {
 			this->m_jumpAchievement->update();
 		}
@@ -74,26 +74,26 @@ public:
 /*
 int main() {
 
-	// Player‚ğ¶¬
+	// Playerã‚’ç”Ÿæˆ
 	Player* pPlayer = new Player();
 
-	// ƒWƒƒƒ“ƒvÀÑ—p‚ÌObserver
+	// ã‚¸ãƒ£ãƒ³ãƒ—å®Ÿç¸¾ç”¨ã®Observer
 	Observer* jumpAchievementObserver = new JumpAchievementObserver();
 
-	// ƒWƒƒƒ“ƒvÀÑ—p‚ÌObserver‚ğƒZƒbƒg‚·‚é
+	// ã‚¸ãƒ£ãƒ³ãƒ—å®Ÿç¸¾ç”¨ã®Observerã‚’ã‚»ãƒƒãƒˆã™ã‚‹
 	pPlayer->setJumpAchievement(jumpAchievementObserver);
 
-	// ƒWƒƒƒ“ƒv‚·‚é
+	// ã‚¸ãƒ£ãƒ³ãƒ—ã™ã‚‹
 	for (int i = 0; i < 15; ++i) {
 		pPlayer->jump();
 	}
 
 
-	// Œã•Ğ•t‚¯
+	// å¾Œç‰‡ä»˜ã‘
 	SAFE_DELETE(pPlayer);
 	SAFE_DELETE(jumpAchievementObserver);
 
-	// ƒXƒgƒbƒp[iEnter‚ğ‰Ÿ‚·‚Æ‘±‚­j
+	// ã‚¹ãƒˆãƒƒãƒ‘ãƒ¼ï¼ˆEnterã‚’æŠ¼ã™ã¨ç¶šãï¼‰
 	std::cout << "Press ENTER KEY to continue..." << std::endl;
 	getchar();
 

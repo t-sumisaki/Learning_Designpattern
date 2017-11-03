@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <vector>
 #include <map>
 
@@ -6,26 +6,26 @@
 #define SAFE_DELETE(p_) if (p_) { delete p_; p_=NULL; }
 
 /// <summary>
-/// ˆóšƒNƒ‰ƒX
+/// å°å­—ã‚¯ãƒ©ã‚¹
 /// </summary>
 class CPrintingType {
 private:
 	/// <summary>
-	/// ˆóš“à—e
+	/// å°å­—å†…å®¹
 	/// </summary>
 	std::string m_str;
 public:
 	/// <summary>
-	/// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	/// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	/// </summary>
-	/// <param name="str">ˆóš“à—e</param>
+	/// <param name="str">å°å­—å†…å®¹</param>
 	CPrintingType(std::string str)
 	: m_str(str){
-		// ƒCƒ“ƒXƒ^ƒ“ƒX‚ª¶¬‚³‚ê‚½ƒ^ƒCƒ~ƒ“ƒO‚ÅƒƒbƒZ[ƒW‚ğo—Í‚·‚é
+		// ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒç”Ÿæˆã•ã‚ŒãŸã‚¿ã‚¤ãƒŸãƒ³ã‚°ã§ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡ºåŠ›ã™ã‚‹
 		std::cout << "Create Instance" << std::endl;
 	}
 	/// <summary>
-	/// ˆóš‚ğo—Í‚·‚é
+	/// å°å­—ã‚’å‡ºåŠ›ã™ã‚‹
 	/// </summary>
 	void print() {
 		std::cout << "====" << this->m_str.c_str() << "====" << std::endl;

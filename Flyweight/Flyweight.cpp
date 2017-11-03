@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <vector>
 #include <map>
 
@@ -6,26 +6,26 @@
 #define SAFE_DELETE(p_) if (p_) { delete p_; p_=NULL; }
 
 /// <summary>
-/// ˆóšƒNƒ‰ƒX
+/// å°å­—ã‚¯ãƒ©ã‚¹
 /// </summary>
 class CPrintingType {
 private:
 	/// <summary>
-	/// ˆóš“à—e
+	/// å°å­—å†…å®¹
 	/// </summary>
 	std::string m_str;
 public:
 	/// <summary>
-	/// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	/// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	/// </summary>
-	/// <param name="str">ˆóš“à—e</param>
+	/// <param name="str">å°å­—å†…å®¹</param>
 	CPrintingType(std::string str)
 		: m_str(str) {
-		// ƒCƒ“ƒXƒ^ƒ“ƒX‚ª¶¬‚³‚ê‚½ƒ^ƒCƒ~ƒ“ƒO‚ÅƒƒbƒZ[ƒW‚ğo—Í‚·‚é
+		// ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒç”Ÿæˆã•ã‚ŒãŸã‚¿ã‚¤ãƒŸãƒ³ã‚°ã§ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡ºåŠ›ã™ã‚‹
 		std::cout << "Create Instance" << std::endl;
 	}
 	/// <summary>
-	/// ˆóš‚ğo—Í‚·‚é
+	/// å°å­—ã‚’å‡ºåŠ›ã™ã‚‹
 	/// </summary>
 	void print() {
 		std::cout << "====" << this->m_str.c_str() << "====" << std::endl;
@@ -34,38 +34,38 @@ public:
 
 
 /// <summary>
-/// ˆóš§Œä—pƒNƒ‰ƒX
+/// å°å­—åˆ¶å¾¡ç”¨ã‚¯ãƒ©ã‚¹
 /// </summary>
 class CPrintingFactory {
 
 public:
 	/// <summary>
-	/// •¶Í‚ğˆóš‚·‚é
+	/// æ–‡ç« ã‚’å°å­—ã™ã‚‹
 	/// </summary>
-	/// <param name="str">•¶Í</param>
+	/// <param name="str">æ–‡ç« </param>
 	void print(std::string str) {
 
-		// ˆóšƒCƒ“ƒXƒ^ƒ“ƒX•Û—p‚Ì•Ï”
+		// å°å­—ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ä¿æŒç”¨ã®å¤‰æ•°
 		CPrintingType* pPrintingType;
 
-		// •¶Í‚Ì’·‚³•ªƒ‹[ƒv
+		// æ–‡ç« ã®é•·ã•åˆ†ãƒ«ãƒ¼ãƒ—
 		for (int i = 0; i < str.length(); ++i) {
 			
-			// ‚P•¶šæ‚èo‚·
+			// ï¼‘æ–‡å­—å–ã‚Šå‡ºã™
 			std::string s = str.substr(i, 1);
 
-			// ˆóšƒLƒƒƒbƒVƒ…“à‚ÉƒCƒ“ƒXƒ^ƒ“ƒX‚ª‘¶İ‚·‚é‚©’²‚×‚é
+			// å°å­—ã‚­ãƒ£ãƒƒã‚·ãƒ¥å†…ã«ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒå­˜åœ¨ã™ã‚‹ã‹èª¿ã¹ã‚‹
 			if (m_printingTypes.find(s) == m_printingTypes.end()) {
-				// Šù‘¶‚ÌPrintingType‚ªŒ©‚Â‚©‚ç‚È‚©‚Á‚½ê‡
+				// æ—¢å­˜ã®PrintingTypeãŒè¦‹ã¤ã‹ã‚‰ãªã‹ã£ãŸå ´åˆ
 				pPrintingType = new CPrintingType(s);
 				m_printingTypes[s] = pPrintingType;
 			}
 			else {
-				// Šù‘¶‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ª‚ ‚éê‡æ‚èo‚·
+				// æ—¢å­˜ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒã‚ã‚‹å ´åˆå–ã‚Šå‡ºã™
 				pPrintingType = m_printingTypes[s];
 			}
 
-			// ˆóš
+			// å°å­—
 			pPrintingType->print();
 
 		}
@@ -73,10 +73,10 @@ public:
 	}
 
 	/// <summary>
-	/// ƒLƒƒƒbƒVƒ…‚µ‚½
+	/// ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã—ãŸ
 	/// </summary>
 	void clear() {
-		// ƒLƒƒƒbƒVƒ…‚µ‚Ä‚¢‚éˆóš‚ğ‚·‚×‚Ä”jŠü‚·‚é
+		// ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã—ã¦ã„ã‚‹å°å­—ã‚’ã™ã¹ã¦ç ´æ£„ã™ã‚‹
 		for (auto itr = this->m_printingTypes.begin(); itr != this->m_printingTypes.end(); ++itr) {
 			SAFE_DELETE(itr->second);
 		}
@@ -85,23 +85,23 @@ public:
 
 
 private:
-	// ˆóšƒCƒ“ƒXƒ^ƒ“ƒXƒLƒƒƒbƒVƒ…—p‚Ìmap
+	// å°å­—ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚­ãƒ£ãƒƒã‚·ãƒ¥ç”¨ã®map
 	std::map<std::string, CPrintingType*> m_printingTypes;
 
 };
 
 
 int main() {
-	// ˆóš‚·‚é•¶Í
+	// å°å­—ã™ã‚‹æ–‡ç« 
 	std::string str = "CCAABCABCCC";
 	
-	// ˆóš§Œä—pƒNƒ‰ƒX‚ğì¬
+	// å°å­—åˆ¶å¾¡ç”¨ã‚¯ãƒ©ã‚¹ã‚’ä½œæˆ
 	CPrintingFactory* pFactory = new CPrintingFactory();
 
-	// ˆóš‚·‚é
+	// å°å­—ã™ã‚‹
 	pFactory->print(str);
 	
-	// Œã•Ğ•t‚¯
+	// å¾Œç‰‡ä»˜ã‘
 	pFactory->clear();
 	SAFE_DELETE(pFactory);
 

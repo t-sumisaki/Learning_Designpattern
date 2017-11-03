@@ -1,31 +1,31 @@
-#include <iostream>
+ï»¿#include <iostream>
 
 #define SAFE_DELETE(p_) if (p_) { delete p_; p_=NULL; }
 
 
-// SingletonƒNƒ‰ƒX
+// Singletonã‚¯ãƒ©ã‚¹
 class Singleton {
 public:
 
-	// ƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚·‚é
+	// ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã™ã‚‹
 	static Singleton& getInstance() {
 		static Singleton* instance = new Singleton();
 		return *instance;
 	}
 
-	// ’l‚ğƒZƒbƒg‚·‚é
+	// å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹
 	void setNum(int num) {
 		num_ = num;
 	}
 
-	// ’l‚ğæ“¾‚·‚é
+	// å€¤ã‚’å–å¾—ã™ã‚‹
 	int getNum() {
 		return num_;
 	}
 
 private:
-	// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
-	// Singleton‚ÌƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ÍPrivate‚É‚µ‚ÄŠO•”‚©‚çƒCƒ“ƒXƒ^ƒ“ƒX‰»‚³‚ê‚È‚¢‚æ‚¤‚É‚·‚é
+	// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
+	// Singletonã®ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã¯Privateã«ã—ã¦å¤–éƒ¨ã‹ã‚‰ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã•ã‚Œãªã„ã‚ˆã†ã«ã™ã‚‹
 	Singleton() {};
 	int num_;
 
@@ -33,19 +33,19 @@ private:
 
 int main() {
 
-	// Singleton‚ğæ“¾
+	// Singletonã‚’å–å¾—
 	Singleton& singleton1 = Singleton::getInstance();
 	Singleton& singleton2 = Singleton::getInstance();
 
-	// Singleton1‚É”’l‚ğ“ü—Í
+	// Singleton1ã«æ•°å€¤ã‚’å…¥åŠ›
 	singleton1.setNum(10);
 
-	// Singleton1‚Ì’†g‚ğQÆ
+	// Singleton1ã®ä¸­èº«ã‚’å‚ç…§
 	std::cout << "Singleton1:" << singleton1.getNum() << std::endl;
-	// Singleton2‚Ì’†g‚ğQÆ
+	// Singleton2ã®ä¸­èº«ã‚’å‚ç…§
 	std::cout << "Singleton2:" << singleton2.getNum() << std::endl;
 
-	// ƒXƒgƒbƒp[iEnter‚ğ‰Ÿ‚·‚Æ‘±‚­j
+	// ã‚¹ãƒˆãƒƒãƒ‘ãƒ¼ï¼ˆEnterã‚’æŠ¼ã™ã¨ç¶šãï¼‰
 	std::cout << "Press ENTER KEY to continue..." << std::endl;
 	getchar();
 
