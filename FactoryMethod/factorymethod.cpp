@@ -40,8 +40,6 @@ int main() {
     // インスタンスのメソッドを使う
     enemyInstance->printName();
 
-    delete enemyInstance;
-
 	// ストッパー（Enterを押すと続く）
 	std::cout << "Press ENTER KEY to continue..." << std::endl;
 	getchar();

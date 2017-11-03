@@ -104,9 +104,6 @@ int main()
     doc->print();
     html->print();
 
-    delete doc;
-    delete html;
-
 
     // ストッパー（Enterを押すと続く）
 	std::cout << "Press ENTER KEY to continue..." << std::endl;
