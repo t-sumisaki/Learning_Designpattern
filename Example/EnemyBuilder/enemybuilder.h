@@ -2,6 +2,15 @@
 
 #include <iostream>
 
+// パラメータ入力用の構造体
+struct EnemyParams {
+    float hp;
+    float atk;
+    float def;
+};
+
+// 敵クラス
+// 実際は継承して使う
 class AEnemy {
 protected:
     float m_hp;
@@ -29,7 +38,7 @@ public:
     }
 };
 
-
+// Builderインターフェース
 class IEnemyBuilder {
 public:
     virtual void setHP(AEnemy* _enemy, float _hp) = 0;
@@ -37,23 +46,30 @@ public:
     virtual void setDef(AEnemy* _enemy, float _def) = 0;
 };
 
+// Director基底クラス
+// 今回はFactoryMethodと継承で実装しているが、テンプレート構文などを使ったほうが良いかも
 class ADirector {
 private:
     IEnemyBuilder* m_builder;
 
+    // FactoryMethod。継承先でどのEnemyのインスタンスを作成するか指定
     virtual AEnemy* createInstance() = 0;
 
 public:
+    // Builderのインスタンスをセットする
     void setBuilder(IEnemyBuilder* _builder) {
         m_builder = _builder;
     }
-    AEnemy* construct(float _hp, float _atk, float _def) {
+
+    // Enemyを作成
+    // Director-Builderパターン
+    AEnemy* construct(EnemyParams param) {
 
         AEnemy* _enemy = createInstance();
         if (m_builder) {
-            m_builder->setHP(_enemy, _hp);
-            m_builder->setAtk(_enemy, _atk);
-            m_builder->setDef(_enemy, _def);
+            m_builder->setHP(_enemy, param.hp);
+            m_builder->setAtk(_enemy, param.atk);
+            m_builder->setDef(_enemy, param.def);
         }
 
         return _enemy;
@@ -61,8 +77,8 @@ public:
 
 };
 
-
-class EnemyDocument {
+// Enemyクラスのパラメータを出力するだけのクラス
+class AEnemyDocment {
 public:
     static void PrintStatus(AEnemy* _enemy) {
 

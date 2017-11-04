@@ -4,7 +4,7 @@
 #include "enemybuilder.h"
 
 
-
+// 難易度Easy用のBuilder
 class EasyEnemyBuilder : public IEnemyBuilder {
 private:
     const float m_rate = 0.5;
@@ -21,6 +21,7 @@ public:
     }
 };
 
+// 難易度Normal用のBuilder
 class NormalEnemyBuilder : public IEnemyBuilder {
 private:
     const float m_rate = 1.0;
@@ -37,6 +38,8 @@ public:
     }
 };
 
+// 統括用のDirector
+// テンプレート構文とかで作ったほうが良いかも
 class EnemyDirector : public ADirector {
 
 private:
@@ -48,18 +51,28 @@ private:
 
 int main() {
 
+    // Director
     EnemyDirector director;
 
+    // 各難易度ごとのBuilderインスタンスを取得
     IEnemyBuilder* easy = new EasyEnemyBuilder();
     IEnemyBuilder* normal = new NormalEnemyBuilder();
 
+    // Enemyインスタンス用の変数
     AEnemy* enemy;
+
+    // パラメータ
+    // 実際はCSVファイルとかから引っ張ってこような
+    EnemyParams param;
+    param.hp = 50;
+    param.atk = 10;
+    param.def = 7;
 
     // Easy版
     std::cout << "-- EASY --" << std::endl;
 
     director.setBuilder(easy);
-    enemy = director.construct(50, 10, 7);
+    enemy = director.construct(param);
 
     EnemyDocument::PrintStatus(enemy);
 
@@ -70,21 +83,18 @@ int main() {
     std::cout << "-- NORMAL --" << std::endl;
 
     director.setBuilder(normal);
-    enemy = director.construct(50, 10, 7);
+    enemy = director.construct(param);
 
     EnemyDocument::PrintStatus(enemy);
 
+
     delete enemy;
-
-
     delete easy;
     delete normal;
-
 
     // ストッパー（Enterを押すと続く）
 	std::cout << "Press ENTER KEY to continue..." << std::endl;
     getchar();
-
 
     return 0;
 
