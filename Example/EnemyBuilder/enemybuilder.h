@@ -78,7 +78,7 @@ public:
 };
 
 // Enemyクラスのパラメータを出力するだけのクラス
-class AEnemyDocment {
+class EnemyDocument {
 public:
     static void PrintStatus(AEnemy* _enemy) {
 
