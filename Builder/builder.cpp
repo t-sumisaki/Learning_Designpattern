@@ -33,24 +33,26 @@ public:
     void makeHeader(std::string& _text, std::string value) override {
         _text += "<!doctype html>\n";
         _text += "<html>\n";
-        _text += "<head>>\n";
+        _text += "<head>\n";
         _text += "<meta charset='utf-8'>\n";
         _text += "<title>" + value + "</title>\n";
         _text += "</head>\n";
+        _text += "<body>\n";
     }
     
     void makeText(std::string& _text, std::string value) override {
-        _text += "<body>\n";
         _text += "<p>テスト用ドキュメントです</p>\n";
-        _text += "</body>\n";
+		_text += "<p>" + value + "</p>";
     }
 
     void makeFooter(std::string& _text, std::string value) override {
+        _text += "</body>\n";
         _text += "<!-- " + value + " -->\n";
         _text += "</html>\n";
     }
 };
 
+// 進行役
 class Director {
 private:
     IBuilder* m_builder;
@@ -63,8 +65,8 @@ public:
     void construct(std::string _title, std::string _text, std::string _author) {
         m_text = "";
         m_builder->makeHeader(m_text, _title);
-        m_builder->makeText(m_text, _text);
-        m_builder->makeFooter(m_text, _author);
+		m_builder->makeText(m_text, _text);
+		m_builder->makeFooter(m_text, _author);
     }
 
     void setBuilder(IBuilder* builder) {
@@ -83,12 +85,15 @@ int main() {
     Director director;
 
     std::cout << "(TextBuilder)" << std::endl;
+	// TextBuilderをセット
     director.setBuilder(textBuilder);
+
     director.construct("Builderパターン", "Builderパターンのサンプル", "sample");
     std::cout << director.getText().c_str() << std::endl;
 
     std::cout << "(HtmlBuilder)" << std::endl;
     director.setBuilder(htmlBuilder);
+
     director.construct("Builderパターン", "Builderパターンのサンプル", "sample");
     std::cout << director.getText().c_str() << std::endl;
 

@@ -66,7 +66,7 @@ class HtmlPrint : public IPrintTemplate
 
         _str += "<!doctype html>\n";
         _str += "<html>\n";
-        _str += "<head>>\n";
+        _str += "<head>\n";
         _str += "<meta charset='utf-8'>\n";
         _str += "</head>\n";
         
