@@ -10,6 +10,7 @@ int main()
     BronzeBox *bronze = new BronzeBox();
 
     thief = new RookieThief();
+	thief->setSkillLevel(2);
     wood->accept(thief);
     steel->accept(thief);
     bronze->accept(thief);

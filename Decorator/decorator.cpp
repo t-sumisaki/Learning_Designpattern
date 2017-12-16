@@ -9,13 +9,21 @@ public:
     }
 };
 
+class Goblin : public AMonster {
+public:
+	virtual void attack() override {
+		std::cout << "ゴブリンの攻撃" << std::endl;
+	}
+};
+
 int main() {
 
     AMonster* monster;
 
     std::cout << "---通常---" << std::endl;
-    monster = new Orc();
-    monster->attack();
+	//monster = new Orc();
+	monster = new Goblin();
+	monster->attack();
 
     std::cout << "---毒効果追加---" << std::endl;
 
