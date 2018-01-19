@@ -24,9 +24,12 @@ int main() {
     ASkillCheck* avoidance = new AvoidanceSkillCheck();
     ASkillCheck* guard = new GuardSkillCheck();
 
-    skillcheck->setNext(accuracy);
-    accuracy->setNext(avoidance);
-    avoidance->setNext(guard);
+    //skillcheck->setNext(accuracy);
+    //accuracy->setNext(avoidance);
+    //avoidance->setNext(guard);
+
+	skillcheck->setNext(avoidance);
+	avoidance->setNext(accuracy);
 
     std::cout << "---通常攻撃---" << std::endl;
     if (skillcheck->check(attacker, defender, normal)) {
